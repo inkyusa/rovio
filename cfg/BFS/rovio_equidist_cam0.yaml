@@ -1,0 +1,13 @@
+image_width: 720
+image_height: 540
+camera_name: cami
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [318.808022726, 0.0, 366.108284311, 0.0, 318.911599439, 283.732395218, 0.0, 0.0, 1.0]
+distortion_model: equidistant
+distortion_coefficients:
+  rows: 1
+  cols: 4
+  data: [0.00825781343213, -0.00267301925115, 0.00417935612541, -0.00175441173611]
+
