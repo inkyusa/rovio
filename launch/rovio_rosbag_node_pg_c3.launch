@@ -11,6 +11,7 @@
 	  <param name="cam0_topic_name" value="/pg_c3_usb_0/image_raw"/>
     <param name="record_odometry" value="true" />
 	  <param name="mkdir_rovio" command="mkdir -m 755 -p $(arg default_bag_path)/$(arg folder_name)/rovio" />
+    <param name="world_frame" value="odom"/>
   </node>
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find rovio)/cfg/rovio_rviz_config.rviz" />
