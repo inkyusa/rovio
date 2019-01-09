@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+  <arg name="folder_name" default="walk07"/>
+  <arg name="cam" default="ch3"/>
+  <arg name="bag_filename" default="$(arg folder_name).bag"/>
+  <arg name="default_bag_path" default="/home/enddl22/workspace/bags/vi-sync/$(arg cam)/rovio_test"/>
+  <node pkg="rovio" type="rovio_rosbag_loader" name="rovio" output="screen">
+	  <param name="filter_config" value="$(find rovio)/cfg/$(arg cam)/rovio_filter.info"/>
+	  <param name="camera0_config" value="$(find rovio)/cfg/$(arg cam)/rovio_equidist_cam0.yaml"/>
+	  <param name="rosbag_filename" value="$(arg default_bag_path)/$(arg folder_name)/$(arg folder_name).bag"/>
+	  <param name="imu_topic_name" value="/arduino_vi/imu"/>
+	  <param name="cam0_topic_name" value="/arduino_vi/image_raw"/>
+    <param name="record_odometry" value="true" />
+	  <param name="mkdir_rovio" command="mkdir -m 755 -p $(arg default_bag_path)/$(arg folder_name)/rovio" />
+    <param name="world_frame" value="odom"/>
+  </node>
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find rovio)/cfg/rovio_rviz_config.rviz" />
+</launch>
