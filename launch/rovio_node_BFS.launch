@@ -6,6 +6,7 @@
 	  <!-- <param name="filter_config" value="$(find rovio)/cfg/rovio_filter.info"/> -->
 	  <param name="camera0_config" value="$(find rovio)/cfg/$(arg cam)/rovio_equidist_cam0.yaml"/>
 	  <remap from="cam0/image_raw" to="/arduino_vi/image_raw"/>
+    <!-- <remap from="cam0/image_raw" to="/BFS_usb_0/image_raw" /> -->
     <remap from="imu0" to="/arduino_vi/imu"/>
     <param name="world_frame" value="odom"/>
   </node>
