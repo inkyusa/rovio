@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+  <arg name="cam" default="BFS_Stick"/>
+  <node pkg="rovio" type="rovio_node" name="rovio" output="screen">
+	  <param name="filter_config" value="$(find rovio)/cfg/$(arg cam)/rovio_filter_BFS_Stick.info"/>
+	  <!-- <param name="filter_config" value="$(find rovio)/cfg/rovio_filter.info"/> -->
+	  <param name="camera0_config" value="$(find rovio)/cfg/$(arg cam)/rovio_equidist_cam0.yaml"/>
+	  <remap from="cam0/image_raw" to="/pointgrey_spinnaker_node/image_raw"/>
+    <!-- <remap from="cam0/image_raw" to="/BFS_usb_0/image_raw" /> -->
+    <remap from="imu0" to="/xsensmt_node/rawImu"/>
+    <param name="world_frame" value="odom"/>
+  </node>
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find rovio)/cfg/rovio_rviz_config.rviz" />
+</launch>
